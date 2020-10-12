@@ -1,18 +1,25 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar'
+import Landing from './components/home/Landing';
+import Footer from './components/layout/Footer';
+import {Provider} from 'react-redux'
+import Navbar from './components/layout/Navbar'
 // import Footer from "./components/Footer";
+
+import store from './store'
 
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      
-      <Footer />
-    </div>
+    
+      <Provider store={store}>
+        <Navbar />
+        <Landing />
+
+        <Footer />
+      </Provider>
+    
   );
 }
 
