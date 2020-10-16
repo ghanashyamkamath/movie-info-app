@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {searchMovie} from "../../actions/searchActions"
+import {searchMovie,fetchMovies} from "../../actions/searchActions"
 
 import {connect} from 'react-redux'
 export class SearchForm extends Component {
@@ -10,6 +10,10 @@ export class SearchForm extends Component {
 
 
     }
+    onSubmit =(e) =>{
+      e.preventDefault();
+      this.props.fetchMovies(this.props.text)
+    }
   render() {
     return (
       <div>
@@ -17,19 +21,19 @@ export class SearchForm extends Component {
           <div class="card-header">IMDB</div>
           <div class="card-body">
             <div className="container ">
-              <form className="form-group mt-3">
+              <form id="searchForm" onSubmit={this.onSubmit} className="form-group mt-3">
                 <i className="fa fa-search" />
                 <label for="abc">Search for movies and TV series</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="abc"
+                  
                   name="searchText"
                   placeholder="search here"
                   onChange={this.onChange}
                 />
                 
-                  <button className="btn btn-primary mt-3">
+                  <button type="submit" className="btn btn-primary mt-3">
                     Search
                   </button>
                 
@@ -47,4 +51,4 @@ const mapStateToProps = (state) =>({
 
 })
 
-export default connect(mapStateToProps,{searchMovie})(SearchForm);
+export default connect(mapStateToProps,{searchMovie,fetchMovies})(SearchForm);
