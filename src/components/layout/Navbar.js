@@ -1,13 +1,14 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 function Navbar() {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark text-light bg-dark">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             MovieSeriesInfo
-          </a>
+          </Link>
           
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
