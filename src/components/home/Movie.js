@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux"
-import {fetchMovie} from '../../actions/searchActions'
+import {fetchMovie,setLoading} from '../../actions/searchActions'
 
 
 
 export class Movie extends Component {
   componentDidMount() {
     this.props.fetchMovie(this.props.match.params.id);
+    this.props.setLoading()
   }
   render() {
     return (
@@ -17,7 +18,7 @@ export class Movie extends Component {
               <img src="#movie-poster" className="thumbnail" alt="Poster" />
             </div>
             <div className="col-md-8">
-              <h2 className="mb-4">MOvie Title</h2>
+              <h2 className="mb-4">Movie Title</h2>
               <ul className="list-group">
                 <li className="list-group-item">
                   <strong>Genre:</strong>Movie Genre
@@ -66,4 +67,4 @@ const mapStateToProps = state =>({
 
 })
 
-export default connect(mapStateToProps,{fetchMovie})(Movie)
+export default connect(mapStateToProps,{fetchMovie,setLoading})(Movie)
